@@ -1,5 +1,7 @@
-def smelt_ore(inventory):
-    if(inventory[1] == "Iron Ore"):
-        inventory[1] = "Iron Bar"
+def generate_user_list(num_of_users):
+    player_ids = []
 
-    return inventory
+    for i in range(0, num_of_users):
+        player_ids.append(i)
+
+    return player_ids

@@ -1,19 +1,16 @@
 from main import *
 
 run_cases = [
-    (
-        ["Potion", "Iron Bar", "Iron Sword", "Leather Armor"],
-        ["Potion", "Iron Bar", "Iron Sword", "Leather Armor"],
-    ),
-    ([None, None, None, None], [None, None, None, None]),
-    (["Potion", "Iron Ore", None, None], ["Potion", "Iron Bar", None, None]),
+    (5, list(range(5))),
+    (10, list(range(10))),
 ]
 
 submit_cases = run_cases + [
-    (
-        [None, "Iron Ore", None, "Leather Armor"],
-        [None, "Iron Bar", None, "Leather Armor"],
-    ),
+    (0, []),
+    (1, [0]),
+    (100, list(range(100))),
+    (25, list(range(25))),
+    (50, list(range(50))),
 ]
 
 
@@ -21,7 +18,7 @@ def test(input1, expected_output):
     print("---------------------------------")
     print(f"Inputs: {input1}")
     print(f"Expecting: {expected_output}")
-    result = smelt_ore(input1)
+    result = generate_user_list(input1)
     print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")
