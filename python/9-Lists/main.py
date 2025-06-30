@@ -1,12 +1,9 @@
-def contains_leather_scraps(items):
-    found = False
+def get_champion_slices(champions):
+    lenght = len(champions)
+    list_one = champions[2:]
+    list_two = champions[:lenght - 1]
+    list_three = champions[::2]
 
-    # don't touch above this line
+    return list_one, list_two, list_three
 
-    for item in items:
-        if(item == "Leather Scraps"):
-            found = True
-
-    # don't touch below this line
-
-    return found
+    
