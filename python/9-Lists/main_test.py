@@ -1,16 +1,17 @@
 from main import *
 
 run_cases = [
-    (5, list(range(5))),
-    (10, list(range(10))),
+    (["Potion", "Healing Potion", "Iron Breastplate", "Leather Scraps"], True),
+    (["Potion", "Shortsword", "Buckler", "Iron Mace"], False),
 ]
 
 submit_cases = run_cases + [
-    (0, []),
-    (1, [0]),
-    (100, list(range(100))),
-    (25, list(range(25))),
-    (50, list(range(50))),
+    ([], False),
+    (["Leather Scraps"], True),
+    (["Potion", "Leather Scraps", "Leather Scraps"], True),
+    (["Potion", "Healing Potion"], False),
+    (["Leather scraps"], False),
+    (["Leather", "Scraps"], False),
 ]
 
 
@@ -18,7 +19,7 @@ def test(input1, expected_output):
     print("---------------------------------")
     print(f"Inputs: {input1}")
     print(f"Expecting: {expected_output}")
-    result = generate_user_list(input1)
+    result = contains_leather_scraps(input1)
     print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")
