@@ -1,36 +1,27 @@
 from main import *
 
 run_cases = [
-    (
-        ["sword", "dagger"],
-        ["bracers", "helmet"],
-        ["feather", "iron bars"],
-        (["sword", "dagger", "bracers", "helmet", "feather", "iron bars"]),
-    ),
+    ("sword of justice", True),
+    ("bronze mace", False),
+    ("sword of slashing", True),
 ]
 
 submit_cases = run_cases + [
-    (
-        ["lance"],
-        ["shield"],
-        ["potions"],
-        (["lance", "shield", "potions"]),
-    ),
-    (
-        ["bow", "staff"],
-        ["breastplate"],
-        ["scrolls", "bedroll"],
-        (["bow", "staff", "breastplate", "scrolls", "bedroll"]),
-    ),
-    ([], [], [], ([])),
+    ("", False),
+    ("great axe", True),
+    ("silver bow", True),
+    ("golden spear", False),
+    ("spiked knuckles", True),
+    ("spellbook", True),
 ]
 
 
-def test(input1, input2, input3, expected_output):
+def test(input1, expected_output):
     print("---------------------------------")
-    print(f"Inputs: {input1}, {input2}, {input3}")
+    print(f"Input:")
+    print(f" * Weapon: {input1}")
     print(f"Expecting: {expected_output}")
-    result = concatenate_favorites(input1, input2, input3)
+    result = is_top_weapon(input1)
     print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")
