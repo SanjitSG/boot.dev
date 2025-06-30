@@ -2,47 +2,36 @@ from main import *
 
 run_cases = [
     (
-        ["Thrundar", "Morgate", "Gandolfo", "Thraine", "Norwad", "Gilforn"],
-        (
-            ["Gandolfo", "Thraine", "Norwad", "Gilforn"],
-            ["Thrundar", "Morgate", "Gandolfo", "Thraine", "Norwad"],
-            ["Thrundar", "Gandolfo", "Norwad"],
-        ),
-    ),
-    (
-        ["Frank", "Dennis", "Sweet Dee", "Mac", "Charlie"],
-        (
-            ["Sweet Dee", "Mac", "Charlie"],
-            ["Frank", "Dennis", "Sweet Dee", "Mac"],
-            ["Frank", "Sweet Dee", "Charlie"],
-        ),
+        ["sword", "dagger"],
+        ["bracers", "helmet"],
+        ["feather", "iron bars"],
+        (["sword", "dagger", "bracers", "helmet", "feather", "iron bars"]),
     ),
 ]
 
 submit_cases = run_cases + [
-    (([]), ([], [], [])),
     (
-        (["John", "Sydney", "Spencer", "Bill", "Matthew", "Brandon", "Tony"]),
-        (
-            ["Spencer", "Bill", "Matthew", "Brandon", "Tony"],
-            ["John", "Sydney", "Spencer", "Bill", "Matthew", "Brandon"],
-            ["John", "Spencer", "Matthew", "Tony"],
-        ),
+        ["lance"],
+        ["shield"],
+        ["potions"],
+        (["lance", "shield", "potions"]),
     ),
+    (
+        ["bow", "staff"],
+        ["breastplate"],
+        ["scrolls", "bedroll"],
+        (["bow", "staff", "breastplate", "scrolls", "bedroll"]),
+    ),
+    ([], [], [], ([])),
 ]
 
 
-def test(input1, expected_output):
-    print("-" * 40)
-    print(f"Input:\n{input1}")
-    print(f"Expecting:\n{expected_output}")
-    try:
-        slice_1, slice_2, slice_3 = get_champion_slices(input1)
-        result = (slice_1, slice_2, slice_3)
-    except Exception as e:
-        print(f"Error: {e}")
-        return False
-    print(f"Actual:\n{result}")
+def test(input1, input2, input3, expected_output):
+    print("---------------------------------")
+    print(f"Inputs: {input1}, {input2}, {input3}")
+    print(f"Expecting: {expected_output}")
+    result = concatenate_favorites(input1, input2, input3)
+    print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")
         return True
