@@ -2,56 +2,35 @@ from main import *
 
 run_cases = [
     (
-        [
-            (
-                "Glorfindel",
-                2093,
-                True,
-            ),
-            (
-                "Gandalf",
-                1054,
-                False,
-            ),
-            (
-                "Gimli",
-                389,
-                False,
-            ),
-            (
-                "Aragorn",
-                87,
-                False,
-            ),
-        ]
+        ["Shortsword", "Healing Potion", "Iron Breastplate", "Kite Shield"],
+        ["Kite Shield", "Iron Breastplate", "Healing Potion", "Shortsword"],
     ),
+    ([1, 2, 300, 4, 5], [5, 4, 300, 2, 1]),
 ]
 
-submit_cases = run_cases
+submit_cases = run_cases + [
+    ([], []),
+    (["a"], ["a"]),
+    ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]),
+    (
+        ["apple", "banana", "cherry", "date", "elderberry"],
+        ["elderberry", "date", "cherry", "banana", "apple"],
+    ),
+    (["hello", "world"], ["world", "hello"]),
+]
 
 
-def test(expected_output):
+def test(input, expected_output):
     print("---------------------------------")
-    passed = True
-    result = get_heroes()
-    if not isinstance(result, list):
-        print("Expected result to be a list")
-        return False
-
-    for i, hero in enumerate(expected_output):
-        print(f"Expected: {hero} at index {i}")
-        if i >= len(result):
-            print(f"Actual: None at index {i}")
-            print("Fail")
-            passed = False
-            continue
-        print(f"Actual: {result[i]} at index {i}")
-        if hero != result[i]:
-            print("Fail")
-            passed = False
-        else:
-            print("Pass")
-    return passed
+    print(f"Input list: {input}")
+    print(f"Expected reversed list: {expected_output}")
+    result = reverse_list(input)
+    print(f"Actual reversed list: {result}")
+    if result == expected_output:
+        print("Pass")
+        return True
+    print("Fail")
+    return False
 
 
 def main():
@@ -59,7 +38,7 @@ def main():
     failed = 0
     skipped = len(submit_cases) - len(test_cases)
     for test_case in test_cases:
-        correct = test(test_case)
+        correct = test(*test_case)
         if correct:
             passed += 1
         else:
