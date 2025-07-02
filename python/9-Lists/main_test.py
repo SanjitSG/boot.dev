@@ -3,88 +3,55 @@ from main import *
 run_cases = [
     (
         [
-            "Rivendale",
-            "The Morgoth Mountains",
-            "The Lonely Island",
-            "Mordia",
-            "Mordane",
-            "Gondolin",
-        ],
-        [
-            "The Morgoth Mountains",
-            "The Lonely Island",
-            "Mordia",
-        ],
+            (
+                "Glorfindel",
+                2093,
+                True,
+            ),
+            (
+                "Gandalf",
+                1054,
+                False,
+            ),
+            (
+                "Gimli",
+                389,
+                False,
+            ),
+            (
+                "Aragorn",
+                87,
+                False,
+            ),
+        ]
     ),
 ]
 
-submit_cases = run_cases + [
-    (
-        [
-            "Pogsmeade",
-            "Dogwarts",
-            "The Leaky Pot",
-            "The Screaming Hut",
-        ],
-        [
-            "Dogwarts",
-        ],
-    ),
-    (
-        [
-            "Midgard",
-            "Cosmo Canyon",
-            "Nibelheim",
-            "Costa del Sol",
-            "Pallet Town",
-            "Viridian City",
-            "Salamandastron",
-            "Redwall Abbey",
-            "Fisherman's Horizon",
-            "Waterdeep",
-            "Elturel",
-            "Candlekeep",
-            "Chult",
-            "Eorzea",
-            "Ratchet",
-            "Orgrimmar",
-            "Stormwind",
-            "Shattrath",
-            "Dalaran",
-        ],
-        [
-            "Cosmo Canyon",
-            "Nibelheim",
-            "Costa del Sol",
-            "Pallet Town",
-            "Viridian City",
-            "Salamandastron",
-            "Redwall Abbey",
-            "Fisherman's Horizon",
-            "Waterdeep",
-            "Elturel",
-            "Candlekeep",
-            "Chult",
-            "Eorzea",
-            "Ratchet",
-            "Orgrimmar",
-            "Stormwind",
-        ],
-    ),
-]
+submit_cases = run_cases
 
 
-def test(input1, expected_output):
+def test(expected_output):
     print("---------------------------------")
-    print(f"    Input: {input1}")
-    print(f"Expecting: {expected_output}")
-    trim_strongholds(input1)
-    print(f"   Actual: {input1}")
-    if input1 == expected_output:
-        print("Pass")
-        return True
-    print("Fail")
-    return False
+    passed = True
+    result = get_heroes()
+    if not isinstance(result, list):
+        print("Expected result to be a list")
+        return False
+
+    for i, hero in enumerate(expected_output):
+        print(f"Expected: {hero} at index {i}")
+        if i >= len(result):
+            print(f"Actual: None at index {i}")
+            print("Fail")
+            passed = False
+            continue
+        print(f"Actual: {result[i]} at index {i}")
+        if hero != result[i]:
+            print("Fail")
+            passed = False
+        else:
+            print("Pass")
+    return passed
 
 
 def main():
@@ -92,7 +59,7 @@ def main():
     failed = 0
     skipped = len(submit_cases) - len(test_cases)
     for test_case in test_cases:
-        correct = test(*test_case)
+        correct = test(test_case)
         if correct:
             passed += 1
         else:
@@ -112,5 +79,3 @@ if "__RUN__" in globals():
     test_cases = run_cases
 
 main()
-
-

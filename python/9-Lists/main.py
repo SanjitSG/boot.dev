@@ -1,7 +1,17 @@
-def trim_strongholds(strongholds):
-    del strongholds[0]
-    del strongholds[-2:]
-    return strongholds
+def get_heroes():
+    heroes = [
+        ("Glorfindel",
+        2093,
+        True),
+        ("Gandalf",
+        1054,
+        False),
+        ("Gimli",
+        389,
+        False),
+        ("Aragorn",
+        87,
+        False),
+    ]
 
-
-    
+    return heroes
