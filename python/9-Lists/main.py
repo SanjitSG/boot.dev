@@ -1,14 +1,7 @@
-def is_top_weapon(weapon):
-    top_weapons = [
-        "sword of justice",
-        "sword of slashing",
-        "stabby daggy",
-        "great axe",
-        "silver bow",
-        "spellbook",
-        "spiked knuckles",
-    ]
+def trim_strongholds(strongholds):
+    del strongholds[0]
+    del strongholds[-2:]
+    return strongholds
 
-    # don't touch above this line
 
-    return weapon in top_weapons
+    

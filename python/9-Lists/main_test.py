@@ -1,29 +1,86 @@
 from main import *
 
 run_cases = [
-    ("sword of justice", True),
-    ("bronze mace", False),
-    ("sword of slashing", True),
+    (
+        [
+            "Rivendale",
+            "The Morgoth Mountains",
+            "The Lonely Island",
+            "Mordia",
+            "Mordane",
+            "Gondolin",
+        ],
+        [
+            "The Morgoth Mountains",
+            "The Lonely Island",
+            "Mordia",
+        ],
+    ),
 ]
 
 submit_cases = run_cases + [
-    ("", False),
-    ("great axe", True),
-    ("silver bow", True),
-    ("golden spear", False),
-    ("spiked knuckles", True),
-    ("spellbook", True),
+    (
+        [
+            "Pogsmeade",
+            "Dogwarts",
+            "The Leaky Pot",
+            "The Screaming Hut",
+        ],
+        [
+            "Dogwarts",
+        ],
+    ),
+    (
+        [
+            "Midgard",
+            "Cosmo Canyon",
+            "Nibelheim",
+            "Costa del Sol",
+            "Pallet Town",
+            "Viridian City",
+            "Salamandastron",
+            "Redwall Abbey",
+            "Fisherman's Horizon",
+            "Waterdeep",
+            "Elturel",
+            "Candlekeep",
+            "Chult",
+            "Eorzea",
+            "Ratchet",
+            "Orgrimmar",
+            "Stormwind",
+            "Shattrath",
+            "Dalaran",
+        ],
+        [
+            "Cosmo Canyon",
+            "Nibelheim",
+            "Costa del Sol",
+            "Pallet Town",
+            "Viridian City",
+            "Salamandastron",
+            "Redwall Abbey",
+            "Fisherman's Horizon",
+            "Waterdeep",
+            "Elturel",
+            "Candlekeep",
+            "Chult",
+            "Eorzea",
+            "Ratchet",
+            "Orgrimmar",
+            "Stormwind",
+        ],
+    ),
 ]
 
 
 def test(input1, expected_output):
     print("---------------------------------")
-    print(f"Input:")
-    print(f" * Weapon: {input1}")
+    print(f"    Input: {input1}")
     print(f"Expecting: {expected_output}")
-    result = is_top_weapon(input1)
-    print(f"Actual: {result}")
-    if result == expected_output:
+    trim_strongholds(input1)
+    print(f"   Actual: {input1}")
+    if input1 == expected_output:
         print("Pass")
         return True
     print("Fail")
@@ -55,3 +112,5 @@ if "__RUN__" in globals():
     test_cases = run_cases
 
 main()
+
+
