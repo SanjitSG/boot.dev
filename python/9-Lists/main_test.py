@@ -2,30 +2,53 @@ from main import *
 
 run_cases = [
     (
-        ["Shortsword", "Healing Potion", "Iron Breastplate", "Kite Shield"],
-        ["Kite Shield", "Iron Breastplate", "Healing Potion", "Shortsword"],
+        [
+            "Harry",
+            "Hermione",
+            "Ron",
+            "Ginny",
+            "Fred",
+            "Neville",
+            "Draco",
+            "Luna",
+            "Cho",
+            "Gregory",
+            "Lee",
+            "Michael",
+            "Lavender",
+            "Frank",
+            "Anthony",
+            "Allan",
+        ],
+        (
+            ["Harry", "Ron", "Fred", "Draco", "Cho", "Lee", "Lavender", "Anthony"],
+            [
+                "Hermione",
+                "Ginny",
+                "Neville",
+                "Luna",
+                "Gregory",
+                "Michael",
+                "Frank",
+                "Allan",
+            ],
+        ),
     ),
-    ([1, 2, 300, 4, 5], [5, 4, 300, 2, 1]),
+    (["Mike", "Walter", "Skyler", "Tuco"], (["Mike", "Skyler"], ["Walter", "Tuco"])),
 ]
 
 submit_cases = run_cases + [
-    ([], []),
-    (["a"], ["a"]),
-    ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]),
-    (
-        ["apple", "banana", "cherry", "date", "elderberry"],
-        ["elderberry", "date", "cherry", "banana", "apple"],
-    ),
-    (["hello", "world"], ["world", "hello"]),
+    (["Alice", "Bob", "Charlie", "David"], (["Alice", "Charlie"], ["Bob", "David"])),
+    ([], ([], [])),
 ]
 
 
-def test(input, expected_output):
+def test(input1, expected_output):
     print("---------------------------------")
-    print(f"Input list: {input}")
-    print(f"Expected reversed list: {expected_output}")
-    result = reverse_list(input)
-    print(f"Actual reversed list: {result}")
+    print(f"Inputs: {input1}")
+    print(f"Expecting: {expected_output}")
+    result = split_players_into_teams(input1)
+    print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")
         return True

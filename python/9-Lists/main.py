@@ -1,11 +1,5 @@
-'''def reverse_list(items):
-    reversed_list = []
-    for i in range(len(items)):
-        reversed_list.append(items[len(items) - 1 - i])
-    
-    return reversed_list
-'''
-
-
-def reverse_list(items):
-    return items[::-1]
+def split_players_into_teams(players):
+    even_indexed = players[0::2]
+    odd_indexed = players[1::2]
+    return even_indexed, odd_indexed
+   
